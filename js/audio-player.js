@@ -180,7 +180,7 @@ class AudioPlayer {
         this.currentTrack = {
             src: audioSrc,
             title: trackInfo.title || 'Unknown Track',
-            artist: trackInfo.artist || 'AudiEssencia',
+            artist: trackInfo.artist || 'audioessentia.com',
             artwork: trackInfo.image || './assets/images/default-artwork.jpg'
         };
 
@@ -284,7 +284,7 @@ class AudioPlayer {
             navigator.mediaSession.metadata = new MediaMetadata({
                 title: this.currentTrack.title,
                 artist: this.currentTrack.artist,
-                album: 'AudiEssencia',
+                album: 'audioessentia.com',
                 artwork: [
                     { src: this.currentTrack.artwork, sizes: '96x96', type: 'image/jpeg' },
                     { src: this.currentTrack.artwork, sizes: '256x256', type: 'image/jpeg' },

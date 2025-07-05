@@ -150,4 +150,4 @@ convert input.jpg -quality 85 -resize 800x450 output.jpg
 ## Contact
 
 For questions about assets or media specifications:
-- Email: tech@audiessencia.com 
+- Email: tech@audioessentia.com 

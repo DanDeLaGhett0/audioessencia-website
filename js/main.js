@@ -380,7 +380,7 @@ class AudiEssenciaApp {
         
         return {
             title: 'Unknown Track',
-            artist: 'AudiEssencia',
+            artist: 'audioessentia.com',
             image: ''
         };
     }

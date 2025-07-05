@@ -1,6 +1,6 @@
-# AudiEssencia - Sound Design Collective Website
+# audioessentia.com - Sound Design Collective Website
 
-A dark, minimal, and sophisticated website for AudiEssencia sound design collective, featuring advanced audio integration, responsive design, and professional aesthetics.
+A dark, minimal, and sophisticated website for audioessentia.com sound design collective, featuring advanced audio integration, responsive design, and professional aesthetics.
 
 ## Features
 
@@ -316,14 +316,14 @@ Update project information in the HTML files:
 
 ## License
 
-This project is proprietary to AudiEssencia. All rights reserved.
+This project is proprietary to audioessentia.com. All rights reserved.
 
 ## Contact
 
 For technical support or questions about the website:
-- Email: tech@audiessencia.com
-- Website: https://audiessencia.com
+- Email: tech@audioessentia.com
+- Website: https://audioessentia.com
 
 ---
 
-**Built with ❤️ for the AudiEssencia collective** 
+**Built with ❤️ for the audioessentia.com collective** 
