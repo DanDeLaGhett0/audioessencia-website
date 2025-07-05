@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact - AudiEssencia</title>
+    <meta name="description" content="Contact AudiEssencia for professional sound design services. Get in touch for film scoring, game audio, installations, and collaborative projects.">
+    <meta name="keywords" content="contact, sound design services, film scoring, game audio, audio collaboration, sound design quote">
+    <meta name="author" content="AudiEssencia">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Contact - AudiEssencia">
+    <meta property="og:description" content="Contact AudiEssencia for professional sound design services and collaborative projects.">
+    <meta property="og:image" content="./assets/images/og-image.jpg">
+    <meta property="og:url" content="https://audiessencia.com/contact">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:title" content="Contact - AudiEssencia">
+    <meta property="twitter:description" content="Contact AudiEssencia for professional sound design services and collaborative projects.">
+    <meta property="twitter:image" content="./assets/images/og-image.jpg">
+    
+    <link rel="stylesheet" href="./styles/main.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="header">
+        <nav class="nav">
+            <div class="nav-container">
+                <a href="/" class="logo">
+                    <span class="logo-text">AudiEssencia</span>
+                    <span class="logo-accent">.</span>
+                </a>
+                <ul class="nav-menu">
+                    <li class="nav-item">
+                        <a href="/" class="nav-link">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/contributors.html" class="nav-link">Contributors</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/contact.html" class="nav-link active" aria-current="page">Contact</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="https://playcast.radio" class="nav-link external" target="_blank" rel="noopener noreferrer">Playcast Radio</a>
+                    </li>
+                </ul>
+                <button class="nav-toggle" aria-label="Toggle navigation menu">
+                    <span class="hamburger"></span>
+                    <span class="hamburger"></span>
+                    <span class="hamburger"></span>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <main class="main">
+        <!-- Page Header -->
+        <section class="page-header">
+            <div class="container">
+                <h1 class="page-title">Let's Create Something Extraordinary</h1>
+                <p class="page-description">
+                    Whether you're looking for a cinematic score, interactive game audio, or an immersive installation, 
+                    we're here to bring your vision to life through sound.
+                </p>
+            </div>
+        </section>
+
+        <!-- Contact Form Section -->
+        <section class="contact-section">
+            <div class="container">
+                <div class="contact-grid">
+                    <div class="contact-form-container">
+                        <h2 class="form-title">Start Your Project</h2>
+                        <form class="contact-form" id="contactForm">
+                            <div class="form-group">
+                                <label for="name" class="form-label">Full Name *</label>
+                                <input type="text" id="name" name="name" class="form-input" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="email" class="form-label">Email Address *</label>
+                                <input type="email" id="email" name="email" class="form-input" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="company" class="form-label">Company/Organization</label>
+                                <input type="text" id="company" name="company" class="form-input">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="projectType" class="form-label">Project Type *</label>
+                                <select id="projectType" name="projectType" class="form-select" required>
+                                    <option value="">Select project type...</option>
+                                    <option value="film-scoring">Film Scoring</option>
+                                    <option value="game-audio">Game Audio</option>
+                                    <option value="sound-design">Sound Design</option>
+                                    <option value="installation">Installation/Exhibition</option>
+                                    <option value="post-production">Post-Production</option>
+                                    <option value="experimental">Experimental/Artistic</option>
+                                    <option value="commercial">Commercial/Advertising</option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="budget" class="form-label">Budget Range *</label>
+                                <select id="budget" name="budget" class="form-select" required>
+                                    <option value="">Select budget range...</option>
+                                    <option value="under-5k">Under $5,000</option>
+                                    <option value="5k-15k">$5,000 - $15,000</option>
+                                    <option value="15k-50k">$15,000 - $50,000</option>
+                                    <option value="50k-100k">$50,000 - $100,000</option>
+                                    <option value="over-100k">Over $100,000</option>
+                                    <option value="tbd">To be discussed</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="timeline" class="form-label">Project Timeline *</label>
+                                <select id="timeline" name="timeline" class="form-select" required>
+                                    <option value="">Select timeline...</option>
+                                    <option value="rush">Rush (1-2 weeks)</option>
+                                    <option value="standard">Standard (1-2 months)</option>
+                                    <option value="extended">Extended (2-6 months)</option>
+                                    <option value="ongoing">Ongoing collaboration</option>
+                                    <option value="flexible">Flexible</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="contributors" class="form-label">Preferred Contributors</label>
+                                <div class="checkbox-group">
+                                    <label class="checkbox-label">
+                                        <input type="checkbox" name="contributors" value="sarah-chen">
+                                        <span class="checkbox-custom"></span>
+                                        Sarah Chen - Film Composer
+                                    </label>
+                                    <label class="checkbox-label">
+                                        <input type="checkbox" name="contributors" value="marcus-rodriguez">
+                                        <span class="checkbox-custom"></span>
+                                        Marcus Rodriguez - Game Audio
+                                    </label>
+                                    <label class="checkbox-label">
+                                        <input type="checkbox" name="contributors" value="elena-vasquez">
+                                        <span class="checkbox-custom"></span>
+                                        Elena Vasquez - Installation Artist
+                                    </label>
+                                    <label class="checkbox-label">
+                                        <input type="checkbox" name="contributors" value="david-park">
+                                        <span class="checkbox-custom"></span>
+                                        David Park - Sound Engineer
+                                    </label>
+                                    <label class="checkbox-label">
+                                        <input type="checkbox" name="contributors" value="aisha-okafor">
+                                        <span class="checkbox-custom"></span>
+                                        Aisha Okafor - Experimental Artist
+                                    </label>
+                                    <label class="checkbox-label">
+                                        <input type="checkbox" name="contributors" value="james-liu">
+                                        <span class="checkbox-custom"></span>
+                                        James Liu - Environmental Audio
+                                    </label>
+                                    <label class="checkbox-label">
+                                        <input type="checkbox" name="contributors" value="no-preference">
+                                        <span class="checkbox-custom"></span>
+                                        No preference - recommend best fit
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="message" class="form-label">Project Description *</label>
+                                <textarea id="message" name="message" class="form-textarea" rows="6" placeholder="Tell us about your project, vision, and specific requirements..." required></textarea>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="references" class="form-label">Reference Materials</label>
+                                <input type="text" id="references" name="references" class="form-input" placeholder="Links to inspiration, reference tracks, or mood boards">
+                            </div>
+
+                            <div class="form-group">
+                                <label class="checkbox-label">
+                                    <input type="checkbox" name="newsletter" value="yes">
+                                    <span class="checkbox-custom"></span>
+                                    Subscribe to our newsletter for updates and insights
+                                </label>
+                            </div>
+
+                            <button type="submit" class="btn btn-primary btn-submit">
+                                <span class="btn-text">Send Project Inquiry</span>
+                                <span class="btn-loading">Sending...</span>
+                            </button>
+                        </form>
+                    </div>
+
+                    <div class="contact-info">
+                        <h3 class="contact-info-title">Get in Touch</h3>
+                        <div class="contact-details">
+                            <div class="contact-item">
+                                <h4 class="contact-item-title">General Inquiries</h4>
+                                <p class="contact-item-detail">
+                                    <a href="mailto:hello@audiessencia.com" class="contact-link">hello@audiessencia.com</a>
+                                </p>
+                            </div>
+
+                            <div class="contact-item">
+                                <h4 class="contact-item-title">Project Collaborations</h4>
+                                <p class="contact-item-detail">
+                                    <a href="mailto:projects@audiessencia.com" class="contact-link">projects@audiessencia.com</a>
+                                </p>
+                            </div>
+
+                            <div class="contact-item">
+                                <h4 class="contact-item-title">Media & Press</h4>
+                                <p class="contact-item-detail">
+                                    <a href="mailto:press@audiessencia.com" class="contact-link">press@audiessencia.com</a>
+                                </p>
+                            </div>
+
+                            <div class="contact-item">
+                                <h4 class="contact-item-title">Phone</h4>
+                                <p class="contact-item-detail">
+                                    <a href="tel:+1-555-AUDIO-01" class="contact-link">+1 (555) AUDIO-01</a>
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="studio-info">
+                            <h4 class="studio-title">Studio Location</h4>
+                            <p class="studio-description">
+                                Our main studio is located in the heart of the creative district, 
+                                equipped with state-of-the-art recording and mixing facilities.
+                            </p>
+                            <div class="studio-address">
+                                <p>123 Sound Avenue<br>
+                                Creative District<br>
+                                Los Angeles, CA 90028</p>
+                            </div>
+                            <p class="studio-hours">
+                                <strong>Studio Hours:</strong><br>
+                                Monday - Friday: 9:00 AM - 8:00 PM<br>
+                                Saturday: 10:00 AM - 6:00 PM<br>
+                                Sunday: By appointment
+                            </p>
+                        </div>
+
+                        <div class="response-time">
+                            <h4 class="response-title">Response Time</h4>
+                            <p class="response-description">
+                                We typically respond to project inquiries within 24-48 hours. 
+                                For urgent projects, please indicate this in your message or 
+                                call us directly.
+                            </p>
+                        </div>
+
+                        <div class="social-links">
+                            <h4 class="social-title">Connect With Us</h4>
+                            <div class="social-grid">
+                                <a href="https://playcast.radio" class="social-link" target="_blank" rel="noopener noreferrer">
+                                    <span class="social-icon">📻</span>
+                                    <span class="social-text">Playcast Radio</span>
+                                </a>
+                                <a href="#" class="social-link" target="_blank" rel="noopener noreferrer">
+                                    <span class="social-icon">🎵</span>
+                                    <span class="social-text">SoundCloud</span>
+                                </a>
+                                <a href="#" class="social-link" target="_blank" rel="noopener noreferrer">
+                                    <span class="social-icon">📷</span>
+                                    <span class="social-text">Instagram</span>
+                                </a>
+                                <a href="#" class="social-link" target="_blank" rel="noopener noreferrer">
+                                    <span class="social-icon">🐦</span>
+                                    <span class="social-text">Twitter</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ Section -->
+        <section class="faq-section">
+            <div class="container">
+                <h2 class="section-title">Frequently Asked Questions</h2>
+                <div class="faq-grid">
+                    <div class="faq-item">
+                        <h3 class="faq-question">What's your typical project timeline?</h3>
+                        <p class="faq-answer">
+                            Project timelines vary based on scope and complexity. Simple sound design projects 
+                            may take 1-2 weeks, while full film scores can take 1-3 months. We'll provide 
+                            a detailed timeline during our initial consultation.
+                        </p>
+                    </div>
+
+                    <div class="faq-item">
+                        <h3 class="faq-question">Do you work with independent filmmakers?</h3>
+                        <p class="faq-answer">
+                            Absolutely! We love working with independent creators and offer flexible 
+                            pricing structures. We believe great stories deserve great sound, regardless 
+                            of budget size.
+                        </p>
+                    </div>
+
+                    <div class="faq-item">
+                        <h3 class="faq-question">Can you work remotely?</h3>
+                        <p class="faq-answer">
+                            Yes, we work with clients globally. We have robust remote collaboration 
+                            workflows and can provide high-quality audio services regardless of location.
+                        </p>
+                    </div>
+
+                    <div class="faq-item">
+                        <h3 class="faq-question">What file formats do you deliver?</h3>
+                        <p class="faq-answer">
+                            We deliver in all industry-standard formats including WAV, AIFF, MP3, and 
+                            specialized formats for games and installations. We'll match your technical 
+                            requirements exactly.
+                        </p>
+                    </div>
+
+                    <div class="faq-item">
+                        <h3 class="faq-question">Do you provide revisions?</h3>
+                        <p class="faq-answer">
+                            Yes, we include revision rounds in our project scope. We work collaboratively 
+                            to ensure the final product exceeds your expectations.
+                        </p>
+                    </div>
+
+                    <div class="faq-item">
+                        <h3 class="faq-question">What about licensing and rights?</h3>
+                        <p class="faq-answer">
+                            We provide clear licensing terms based on your project needs. From exclusive 
+                            buyouts to usage-based licensing, we'll structure a deal that works for both parties.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3 class="footer-title">AudiEssencia</h3>
+                    <p class="footer-description">
+                        Crafting immersive audio experiences that transcend the ordinary.
+                    </p>
+                </div>
+                <div class="footer-section">
+                    <h4 class="footer-subtitle">Services</h4>
+                    <ul class="footer-links">
+                        <li><a href="#" class="footer-link">Film Scoring</a></li>
+                        <li><a href="#" class="footer-link">Game Audio</a></li>
+                        <li><a href="#" class="footer-link">Sound Design</a></li>
+                        <li><a href="#" class="footer-link">Audio Post-Production</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4 class="footer-subtitle">Connect</h4>
+                    <ul class="footer-links">
+                        <li><a href="/contact.html" class="footer-link">Contact</a></li>
+                        <li><a href="https://playcast.radio" class="footer-link external" target="_blank" rel="noopener noreferrer">Playcast Radio</a></li>
+                        <li><a href="#" class="footer-link">Newsletter</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p class="footer-copyright">© 2024 AudiEssencia. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="./js/main.js"></script>
+</body>
+</html> 

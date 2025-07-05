@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AudiEssencia - Sound Design Collective</title>
+    <meta name="description" content="Professional sound design collective specializing in film scoring, game audio, and sonic installations. Discover our latest projects and collaborate with expert audio producers.">
+    <meta name="keywords" content="sound design, audio production, film scoring, game audio, sonic installations, music collective">
+    <meta name="author" content="AudiEssencia">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="AudiEssencia - Sound Design Collective">
+    <meta property="og:description" content="Professional sound design collective specializing in film scoring, game audio, and sonic installations.">
+    <meta property="og:image" content="./assets/images/og-image.jpg">
+    <meta property="og:url" content="https://audiessencia.com">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:title" content="AudiEssencia - Sound Design Collective">
+    <meta property="twitter:description" content="Professional sound design collective specializing in film scoring, game audio, and sonic installations.">
+    <meta property="twitter:image" content="./assets/images/og-image.jpg">
+    
+    <link rel="stylesheet" href="./styles/main.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="header">
+        <nav class="nav">
+            <div class="nav-container">
+                <a href="/" class="logo">
+                    <span class="logo-text">AudiEssencia</span>
+                    <span class="logo-accent">.</span>
+                </a>
+                <ul class="nav-menu">
+                    <li class="nav-item">
+                        <a href="/" class="nav-link active" aria-current="page">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/contributors.html" class="nav-link">Contributors</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/contact.html" class="nav-link">Contact</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="https://playcast.radio" class="nav-link external" target="_blank" rel="noopener noreferrer">Playcast Radio</a>
+                    </li>
+                </ul>
+                <button class="nav-toggle" aria-label="Toggle navigation menu">
+                    <span class="hamburger"></span>
+                    <span class="hamburger"></span>
+                    <span class="hamburger"></span>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <main class="main">
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="hero-container">
+                <div class="hero-content">
+                    <h1 class="hero-title">
+                        <span class="hero-title-main">Sound Design</span>
+                        <span class="hero-title-sub">Collective</span>
+                    </h1>
+                    <p class="hero-description">
+                        We craft immersive audio experiences that transcend the ordinary. 
+                        From cinematic scores to interactive soundscapes, we transform 
+                        silence into story.
+                    </p>
+                    <div class="hero-cta">
+                        <button class="btn btn-primary" id="playFeatured">
+                            <span class="btn-icon">▶</span>
+                            Listen to Featured Work
+                        </button>
+                        <a href="/contact.html" class="btn btn-secondary">Start a Project</a>
+                    </div>
+                </div>
+                <div class="hero-visual">
+                    <canvas id="audioVisualizer" class="audio-visualizer"></canvas>
+                    <div class="waveform-container">
+                        <svg class="waveform-svg" viewBox="0 0 400 100">
+                            <path id="waveformPath" class="waveform-path" d="M0,50 Q100,25 200,50 T400,50"></path>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Featured Projects -->
+        <section class="featured-projects">
+            <div class="container">
+                <h2 class="section-title">Featured Projects</h2>
+                <div class="projects-grid">
+                    <article class="project-card">
+                        <div class="project-media">
+                            <img src="./assets/images/project-1.jpg" alt="Cinematic Soundscape Project" class="project-image" loading="lazy">
+                            <div class="project-overlay">
+                                <button class="play-btn" data-audio="./assets/audio/project-1.mp3" aria-label="Play Cinematic Soundscape">
+                                    <span class="play-icon">▶</span>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="project-content">
+                            <h3 class="project-title">Cinematic Soundscape</h3>
+                            <p class="project-description">Atmospheric composition for independent film featuring layered synthesizers and field recordings.</p>
+                            <div class="project-meta">
+                                <span class="project-category">Film Scoring</span>
+                                <span class="project-duration">3:42</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="project-card">
+                        <div class="project-media">
+                            <img src="./assets/images/project-2.jpg" alt="Interactive Game Audio" class="project-image" loading="lazy">
+                            <div class="project-overlay">
+                                <button class="play-btn" data-audio="./assets/audio/project-2.mp3" aria-label="Play Interactive Game Audio">
+                                    <span class="play-icon">▶</span>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="project-content">
+                            <h3 class="project-title">Interactive Game Audio</h3>
+                            <p class="project-description">Dynamic audio system with adaptive soundscapes that respond to player actions and environment.</p>
+                            <div class="project-meta">
+                                <span class="project-category">Game Audio</span>
+                                <span class="project-duration">2:18</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="project-card">
+                        <div class="project-media">
+                            <img src="./assets/images/project-3.jpg" alt="Sonic Installation" class="project-image" loading="lazy">
+                            <div class="project-overlay">
+                                <button class="play-btn" data-audio="./assets/audio/project-3.mp3" aria-label="Play Sonic Installation">
+                                    <span class="play-icon">▶</span>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="project-content">
+                            <h3 class="project-title">Sonic Installation</h3>
+                            <p class="project-description">Immersive audio environment created for gallery space, exploring spatial audio and binaural processing.</p>
+                            <div class="project-meta">
+                                <span class="project-category">Installation</span>
+                                <span class="project-duration">5:20</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="project-card">
+                        <div class="project-media">
+                            <img src="./assets/images/project-4.jpg" alt="Experimental Composition" class="project-image" loading="lazy">
+                            <div class="project-overlay">
+                                <button class="play-btn" data-audio="./assets/audio/project-4.mp3" aria-label="Play Experimental Composition">
+                                    <span class="play-icon">▶</span>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="project-content">
+                            <h3 class="project-title">Experimental Composition</h3>
+                            <p class="project-description">Genre-defying piece combining organic instruments with digital processing and AI-generated textures.</p>
+                            <div class="project-meta">
+                                <span class="project-category">Experimental</span>
+                                <span class="project-duration">4:15</span>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- Manifesto Section -->
+        <section class="manifesto">
+            <div class="container">
+                <div class="manifesto-content">
+                    <h2 class="manifesto-title">Our Manifesto</h2>
+                    <blockquote class="manifesto-quote">
+                        "Sound is the invisible thread that connects emotion to memory, 
+                        story to soul. We don't just create audio—we architect experiences 
+                        that resonate in the depths of human consciousness."
+                    </blockquote>
+                    <p class="manifesto-description">
+                        AudiEssencia represents a collective of forward-thinking sound designers, 
+                        composers, and audio engineers who push the boundaries of what's possible 
+                        in sonic storytelling. Our work spans film, games, installations, and 
+                        experimental media, always seeking the perfect balance between technical 
+                        excellence and artistic vision.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contributors Highlight -->
+        <section class="contributors-highlight">
+            <div class="container">
+                <h2 class="section-title">Meet the Collective</h2>
+                <div class="contributors-grid">
+                    <div class="contributor-card">
+                        <div class="contributor-avatar">
+                            <img src="./assets/images/contributor-1.jpg" alt="Sarah Chen - Film Composer" loading="lazy">
+                        </div>
+                        <h3 class="contributor-name">Sarah Chen</h3>
+                        <p class="contributor-role">Film Composer</p>
+                        <p class="contributor-specialty">Cinematic Scoring</p>
+                    </div>
+                    <div class="contributor-card">
+                        <div class="contributor-avatar">
+                            <img src="./assets/images/contributor-2.jpg" alt="Marcus Rodriguez - Game Audio Designer" loading="lazy">
+                        </div>
+                        <h3 class="contributor-name">Marcus Rodriguez</h3>
+                        <p class="contributor-role">Game Audio Designer</p>
+                        <p class="contributor-specialty">Interactive Systems</p>
+                    </div>
+                    <div class="contributor-card">
+                        <div class="contributor-avatar">
+                            <img src="./assets/images/contributor-3.jpg" alt="Elena Vasquez - Installation Artist" loading="lazy">
+                        </div>
+                        <h3 class="contributor-name">Elena Vasquez</h3>
+                        <p class="contributor-role">Installation Artist</p>
+                        <p class="contributor-specialty">Spatial Audio</p>
+                    </div>
+                </div>
+                <div class="contributors-cta">
+                    <a href="/contributors.html" class="btn btn-outline">View All Contributors</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Persistent Audio Player -->
+    <div class="audio-player-container" id="audioPlayer">
+        <div class="audio-player">
+            <div class="player-info">
+                <div class="track-artwork">
+                    <img id="currentTrackArt" src="" alt="Current track artwork">
+                </div>
+                <div class="track-details">
+                    <h4 id="currentTrackTitle">No track selected</h4>
+                    <p id="currentTrackArtist">AudiEssencia</p>
+                </div>
+            </div>
+            <div class="player-controls">
+                <button id="prevBtn" class="control-btn" aria-label="Previous track">⏮</button>
+                <button id="playPauseBtn" class="control-btn control-btn-main" aria-label="Play/Pause">▶</button>
+                <button id="nextBtn" class="control-btn" aria-label="Next track">⏭</button>
+            </div>
+            <div class="player-progress">
+                <div class="progress-bar" id="progressBar">
+                    <div class="progress-fill" id="progressFill"></div>
+                </div>
+                <div class="time-info">
+                    <span id="currentTime">0:00</span>
+                    <span id="duration">0:00</span>
+                </div>
+            </div>
+            <div class="player-volume">
+                <button id="volumeBtn" class="control-btn" aria-label="Volume">🔊</button>
+                <input type="range" id="volumeSlider" class="volume-slider" min="0" max="1" step="0.1" value="0.7">
+            </div>
+            <button id="closePlayer" class="close-btn" aria-label="Close player">×</button>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3 class="footer-title">AudiEssencia</h3>
+                    <p class="footer-description">
+                        Crafting immersive audio experiences that transcend the ordinary.
+                    </p>
+                </div>
+                <div class="footer-section">
+                    <h4 class="footer-subtitle">Services</h4>
+                    <ul class="footer-links">
+                        <li><a href="#" class="footer-link">Film Scoring</a></li>
+                        <li><a href="#" class="footer-link">Game Audio</a></li>
+                        <li><a href="#" class="footer-link">Sound Design</a></li>
+                        <li><a href="#" class="footer-link">Audio Post-Production</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4 class="footer-subtitle">Connect</h4>
+                    <ul class="footer-links">
+                        <li><a href="/contact.html" class="footer-link">Contact</a></li>
+                        <li><a href="https://playcast.radio" class="footer-link external" target="_blank" rel="noopener noreferrer">Playcast Radio</a></li>
+                        <li><a href="#" class="footer-link">Newsletter</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p class="footer-copyright">© 2024 AudiEssencia. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="./js/main.js"></script>
+    <script src="./js/audio-player.js"></script>
+</body>
+</html> 
