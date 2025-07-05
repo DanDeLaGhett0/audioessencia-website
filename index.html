@@ -82,7 +82,12 @@
                     <canvas id="audioVisualizer" class="audio-visualizer"></canvas>
                     <div class="waveform-container">
                         <svg class="waveform-svg" viewBox="0 0 400 100">
-                            <path id="waveformPath" class="waveform-path" d="M0,50 Q100,25 200,50 T400,50"></path>
+                            <!-- Background waveform (lower frequency) -->
+                            <path id="waveformBackground" class="waveform-path waveform-background" d="M0,50 Q100,40 200,50 T400,60"></path>
+                            <!-- Main waveform -->
+                            <path id="waveformPath" class="waveform-path waveform-main" d="M0,50 Q100,25 200,50 T400,50"></path>
+                            <!-- High frequency overlay -->
+                            <path id="waveformOverlay" class="waveform-path waveform-overlay" d="M0,50 Q100,45 200,55 T400,45"></path>
                         </svg>
                     </div>
                 </div>

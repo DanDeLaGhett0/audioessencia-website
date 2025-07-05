@@ -513,42 +513,128 @@ class AudiEssenciaApp {
 
     // Waveform Animation
     initWaveformAnimation() {
-        const waveformPath = document.getElementById('waveformPath');
+        const waveformMain = document.getElementById('waveformPath');
+        const waveformBackground = document.getElementById('waveformBackground');
+        const waveformOverlay = document.getElementById('waveformOverlay');
         
-        if (waveformPath) {
+        if (waveformMain) {
             let animationId;
-            let phase = 0;
+            let time = 0;
+            let isVisible = true;
             
-            const animate = () => {
-                phase += 0.02;
-                
-                // Generate dynamic waveform path
+            // Function to generate waveform points with specific characteristics
+            const generateWaveform = (timeOffset, frequencyMult, amplitudeMult, noiseMult = 1) => {
                 const points = [];
-                for (let i = 0; i <= 400; i += 10) {
-                    const y = 50 + Math.sin(i * 0.02 + phase) * 20 + Math.sin(i * 0.05 + phase * 2) * 10;
-                    points.push(`${i},${y}`);
+                const baseY = 50; // Center line
+                const width = 400;
+                const samples = 100; // More sample points for smoother curve
+                
+                for (let i = 0; i <= samples; i++) {
+                    const x = (i / samples) * width;
+                    const normalizedX = i / samples;
+                    
+                    // Multiple sine waves for complex waveform
+                    let y = baseY;
+                    
+                    // Primary frequency wave
+                    y += Math.sin(normalizedX * Math.PI * 3 * frequencyMult + time * 2 + timeOffset) * 12 * amplitudeMult;
+                    
+                    // Secondary harmonics
+                    y += Math.sin(normalizedX * Math.PI * 6 * frequencyMult + time * 3.5 + timeOffset) * 6 * amplitudeMult;
+                    y += Math.sin(normalizedX * Math.PI * 12 * frequencyMult + time * 5 + timeOffset) * 3 * amplitudeMult;
+                    
+                    // High frequency details
+                    y += Math.sin(normalizedX * Math.PI * 24 * frequencyMult + time * 8 + timeOffset) * 1.5 * amplitudeMult;
+                    
+                    // Low frequency modulation for amplitude variation
+                    const envelope = 0.7 + 0.4 * Math.sin(normalizedX * Math.PI * 1.5 + time * 1.2 + timeOffset * 0.5);
+                    y = baseY + (y - baseY) * envelope;
+                    
+                    // Add realistic audio noise
+                    y += (Math.random() - 0.5) * 1.5 * noiseMult * amplitudeMult;
+                    
+                    // Breathing effect - overall amplitude modulation
+                    const breathe = 0.8 + 0.2 * Math.sin(time * 0.8 + timeOffset * 0.3);
+                    y = baseY + (y - baseY) * breathe;
+                    
+                    // Ensure wave stays within bounds
+                    y = Math.max(15, Math.min(85, y));
+                    
+                    points.push([x, y]);
                 }
                 
-                const pathData = `M${points.join(' L')}`;
-                waveformPath.setAttribute('d', pathData);
+                return points;
+            };
+            
+            // Function to create smooth SVG path from points
+            const createSmoothPath = (points) => {
+                if (points.length < 2) return '';
+                
+                let pathData = `M${points[0][0]},${points[0][1]}`;
+                
+                // Use cubic Bezier curves for ultra-smooth waveform
+                for (let i = 1; i < points.length - 1; i++) {
+                    const [x1, y1] = points[i];
+                    const [x2, y2] = points[i + 1];
+                    const [x0, y0] = points[i - 1];
+                    
+                    // Calculate control points for smooth curves
+                    const cp1x = x1 - (x2 - x0) * 0.1;
+                    const cp1y = y1 - (y2 - y0) * 0.1;
+                    const cp2x = x1 + (x2 - x0) * 0.1;
+                    const cp2y = y1 + (y2 - y0) * 0.1;
+                    
+                    pathData += ` C${cp1x},${cp1y} ${cp2x},${cp2y} ${x2},${y2}`;
+                }
+                
+                return pathData;
+            };
+            
+            const animate = () => {
+                if (!isVisible) return;
+                
+                time += 0.016; // Approximately 60fps
+                
+                // Generate different waveforms for each layer
+                
+                // Background waveform - low frequency, high amplitude
+                if (waveformBackground) {
+                    const bgPoints = generateWaveform(0, 0.8, 1.5, 0.3);
+                    const bgPath = createSmoothPath(bgPoints);
+                    waveformBackground.setAttribute('d', bgPath);
+                }
+                
+                // Main waveform - medium frequency, standard amplitude
+                const mainPoints = generateWaveform(Math.PI * 0.3, 1.2, 1.0, 1.0);
+                const mainPath = createSmoothPath(mainPoints);
+                waveformMain.setAttribute('d', mainPath);
+                
+                // Overlay waveform - high frequency, lower amplitude
+                if (waveformOverlay) {
+                    const overlayPoints = generateWaveform(Math.PI * 0.7, 2.0, 0.6, 1.5);
+                    const overlayPath = createSmoothPath(overlayPoints);
+                    waveformOverlay.setAttribute('d', overlayPath);
+                }
                 
                 animationId = requestAnimationFrame(animate);
             };
             
             animate();
             
-            // Pause animation when not visible
+            // Pause animation when not visible for performance
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
-                    if (entry.isIntersecting) {
+                    isVisible = entry.isIntersecting;
+                    if (isVisible && !animationId) {
                         animate();
-                    } else {
+                    } else if (!isVisible && animationId) {
                         cancelAnimationFrame(animationId);
+                        animationId = null;
                     }
                 });
             });
             
-            observer.observe(waveformPath);
+            observer.observe(waveformMain);
         }
     }
 
@@ -573,58 +659,124 @@ class AudiEssenciaApp {
 
     createAmbientVisualization(ctx, canvas) {
         const particles = [];
-        const numParticles = 50;
+        const numParticles = 60;
+        let time = 0;
         
-        // Initialize particles
+        // Initialize particles with audio-reactive properties
         for (let i = 0; i < numParticles; i++) {
             particles.push({
                 x: Math.random() * canvas.width,
                 y: Math.random() * canvas.height,
-                vx: (Math.random() - 0.5) * 0.5,
-                vy: (Math.random() - 0.5) * 0.5,
-                opacity: Math.random() * 0.5 + 0.1,
-                size: Math.random() * 2 + 1
+                vx: (Math.random() - 0.5) * 0.3,
+                vy: (Math.random() - 0.5) * 0.3,
+                opacity: Math.random() * 0.4 + 0.2,
+                size: Math.random() * 1.5 + 0.5,
+                phase: Math.random() * Math.PI * 2,
+                frequency: Math.random() * 0.02 + 0.01,
+                amplitude: Math.random() * 20 + 10
             });
         }
         
         const animate = () => {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            time += 0.016;
             
-            // Update and draw particles
-            particles.forEach(particle => {
+            // Create subtle background gradient
+            const gradient = ctx.createRadialGradient(
+                canvas.width / 2, canvas.height / 2, 0,
+                canvas.width / 2, canvas.height / 2, Math.max(canvas.width, canvas.height) / 2
+            );
+            gradient.addColorStop(0, 'rgba(0, 212, 255, 0.02)');
+            gradient.addColorStop(1, 'rgba(0, 212, 255, 0)');
+            
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            ctx.fillStyle = gradient;
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            
+            // Update and draw particles with audio-reactive movement
+            particles.forEach((particle, index) => {
+                // Audio-reactive oscillation
+                const oscillation = Math.sin(time * particle.frequency + particle.phase) * particle.amplitude;
+                const yOffset = oscillation * 0.1;
+                
+                // Base movement
                 particle.x += particle.vx;
-                particle.y += particle.vy;
+                particle.y += particle.vy + yOffset * 0.01;
                 
-                // Wrap around edges
-                if (particle.x < 0) particle.x = canvas.width;
-                if (particle.x > canvas.width) particle.x = 0;
-                if (particle.y < 0) particle.y = canvas.height;
-                if (particle.y > canvas.height) particle.y = 0;
+                // Audio-reactive size pulsing
+                const pulseScale = 1 + Math.sin(time * 2 + particle.phase) * 0.3;
+                const currentSize = particle.size * pulseScale;
                 
-                // Draw particle
+                // Breathing opacity effect
+                const breathingOpacity = particle.opacity * (0.8 + 0.4 * Math.sin(time * 0.8 + particle.phase));
+                
+                // Wrap around edges with smooth transition
+                if (particle.x < -currentSize) particle.x = canvas.width + currentSize;
+                if (particle.x > canvas.width + currentSize) particle.x = -currentSize;
+                if (particle.y < -currentSize) particle.y = canvas.height + currentSize;
+                if (particle.y > canvas.height + currentSize) particle.y = -currentSize;
+                
+                // Draw particle with glow effect
                 ctx.beginPath();
-                ctx.arc(particle.x, particle.y, particle.size, 0, Math.PI * 2);
-                ctx.fillStyle = `rgba(0, 212, 255, ${particle.opacity})`;
+                ctx.arc(particle.x, particle.y, currentSize, 0, Math.PI * 2);
+                
+                // Create particle glow
+                const particleGradient = ctx.createRadialGradient(
+                    particle.x, particle.y, 0,
+                    particle.x, particle.y, currentSize * 3
+                );
+                particleGradient.addColorStop(0, `rgba(0, 212, 255, ${breathingOpacity})`);
+                particleGradient.addColorStop(0.5, `rgba(0, 212, 255, ${breathingOpacity * 0.3})`);
+                particleGradient.addColorStop(1, 'rgba(0, 212, 255, 0)');
+                
+                ctx.fillStyle = particleGradient;
+                ctx.fill();
+                
+                // Draw core particle
+                ctx.beginPath();
+                ctx.arc(particle.x, particle.y, currentSize * 0.3, 0, Math.PI * 2);
+                ctx.fillStyle = `rgba(51, 221, 255, ${breathingOpacity * 1.5})`;
                 ctx.fill();
             });
             
-            // Draw connections
+            // Draw dynamic connections between nearby particles
             particles.forEach((particle, i) => {
                 particles.slice(i + 1).forEach(otherParticle => {
                     const dx = particle.x - otherParticle.x;
                     const dy = particle.y - otherParticle.y;
                     const distance = Math.sqrt(dx * dx + dy * dy);
                     
-                    if (distance < 100) {
+                    if (distance < 120) {
+                        const connectionStrength = (120 - distance) / 120;
+                        const opacity = connectionStrength * 0.15;
+                        
+                        // Audio-reactive connection thickness
+                        const thickness = 0.5 + Math.sin(time * 3 + i * 0.5) * 0.3;
+                        
                         ctx.beginPath();
                         ctx.moveTo(particle.x, particle.y);
                         ctx.lineTo(otherParticle.x, otherParticle.y);
-                        ctx.strokeStyle = `rgba(0, 212, 255, ${(100 - distance) / 100 * 0.2})`;
-                        ctx.lineWidth = 0.5;
+                        ctx.strokeStyle = `rgba(0, 212, 255, ${opacity})`;
+                        ctx.lineWidth = thickness;
                         ctx.stroke();
                     }
                 });
             });
+            
+            // Add subtle waveform overlay on canvas
+            ctx.beginPath();
+            const waveY = canvas.height / 2;
+            ctx.moveTo(0, waveY);
+            
+            for (let x = 0; x <= canvas.width; x += 2) {
+                const normalizedX = x / canvas.width;
+                const wave = Math.sin(normalizedX * Math.PI * 4 + time * 2) * 8 +
+                           Math.sin(normalizedX * Math.PI * 8 + time * 3) * 4;
+                ctx.lineTo(x, waveY + wave);
+            }
+            
+            ctx.strokeStyle = `rgba(0, 212, 255, 0.1)`;
+            ctx.lineWidth = 1;
+            ctx.stroke();
             
             requestAnimationFrame(animate);
         };
